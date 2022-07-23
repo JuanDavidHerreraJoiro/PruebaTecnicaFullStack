@@ -29,7 +29,7 @@ namespace PruebaTecnicaFullStack.Models
         }
 
         public double NotaFinal { get; set; }
-        public string? aprobado { get; set; }
+        public string? Aprobado { get; set; }
         public EstudianteViewModel? Estudiante { get; set; }
         public CursoViewModel? Curso { get; set; }
         
@@ -40,23 +40,23 @@ namespace PruebaTecnicaFullStack.Models
         {
             NotaFinal = (this.Nota1 * 0.3) + (this.Nota2 * 0.3) + (this.Nota3 * 0.4);
         }
-
+        
         public void CambioEstado()
         {
             if (this.Nota1 != 0 && this.Nota2 != 0 && this.Nota3 != 0)
             {
                 if (NotaFinal>2.95)
                 {
-                    aprobado = "APROBADO";
+                    Aprobado = "APROBADO";
                 }
                 else
                 {
-                    aprobado = "REPROBADO";
+                    Aprobado = "REPROBADO";
                 }
             }
             else
             {
-                aprobado = "PENDIENTE";
+                Aprobado = "PENDIENTE";
             }
         }
     }
