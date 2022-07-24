@@ -1,0 +1,23 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav="matSidenav" color="primary">
+        <mat-toolbar class="toolbar-sidenav">
+            <span class="spacer"></span>
+            <span>Prueba Tecnica</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon class="material-icons md-18">close</mat-icon>
+            </button>
+        </mat-toolbar>
+        <app-sidenav [sidenav]="sidenav"></app-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <app-navbar [sidenav]="sidenav"></app-navbar>
+
+        <div fxLayout="row" fxLayoutAlign="center">
+            <div fxFlex="95" [style.margin]="'50px 0'">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

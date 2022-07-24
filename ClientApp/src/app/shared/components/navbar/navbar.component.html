@@ -1,0 +1,21 @@
+<mat-toolbar class="mat-elevation-z8">
+    <button *ngIf="!sidenav.opened" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+
+        <div fxFlex>
+            <button mat-button aria-label="Example icon-button with a menu">
+                <div fxLayout="row"
+                    fxLayoutGap="5px"
+                    [style.margin]="'5px 0'">
+                    <span fxHide.xs>JUAN DAVID HERRERA JOIRO</span>
+                    <p-avatar matListAvatar label="HJ" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}" shape="circle"></p-avatar>
+                </div>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>

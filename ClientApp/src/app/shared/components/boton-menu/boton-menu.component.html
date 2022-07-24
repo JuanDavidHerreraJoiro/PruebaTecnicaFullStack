@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+    <div fxFlex>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngIf="botones[0].ruta" (click)="redireccionar(botones[0].ruta)">
+                <mat-icon fontSet="material-icons-outlined">{{botones[0].icono}}</mat-icon>
+                <span>{{ botones[0].mensaje }}</span>
+            </button>
+            <button mat-menu-item *ngIf="botones[0].id" (click)="emitir(botones[0])">
+                <mat-icon fontSet="material-icons-outlined">{{botones[0].icono}}</mat-icon>
+                <span>{{ botones[0].mensaje }}</span>
+            </button>
+            <button mat-menu-item *ngIf="botones[1] && botones[1].id" (click)="emitir(botones[1])">
+                <mat-icon fontSet="material-icons-outlined">{{botones[1].icono}}</mat-icon>
+                <span>{{ botones[1].mensaje }}</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>

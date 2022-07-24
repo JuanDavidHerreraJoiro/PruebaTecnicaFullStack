@@ -1,0 +1,11 @@
+<button *ngIf="!media.isActive('xs'); else xs" mat-raised-button [color]="boton.color" (click)="accion()">
+    <mat-icon fontSet="material-icons-outlined" matListIcon>{{ boton.icono }}</mat-icon>
+    {{ boton.mensaje }}
+</button>
+
+<ng-template #xs>
+    <button mat-mini-fab [color]="boton.color" [matTooltip]="boton.mensaje" (click)="accion()">
+        <mat-icon fontSet="material-icons-outlined" matListIcon>{{ boton.icono }}</mat-icon>
+    </button>
+</ng-template>
+

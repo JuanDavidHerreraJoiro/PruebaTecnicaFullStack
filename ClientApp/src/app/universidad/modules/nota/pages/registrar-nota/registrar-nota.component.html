@@ -1,0 +1,80 @@
+<mat-card class="mat-elevation-z4">
+    <mat-card-title>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="50">
+                <span>Registrar Nota</span>
+            </div>
+        </div>
+    </mat-card-title>
+
+    <hr>
+    <br>
+
+    <mat-card-content>
+        <form (ngSubmit)="guardar()" [formGroup]="miFormulario" autocomplete="off">
+            <div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0">
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Nota 1</mat-label>
+                    <input matInput type="number" placeholder="Nota 1" formControlName="nota1" [errorStateMatcher]="vs.matcher">
+                    <mat-error *ngIf="vs.campoEsValido('nota1')">{{vs.getMensaje('nota1')}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Nota 2</mat-label>
+                    <input matInput type="number" placeholder="Nota 2" formControlName="nota2" [errorStateMatcher]="vs.matcher">
+                    <mat-error *ngIf="vs.campoEsValido('nota2')">{{vs.getMensaje('nota2')}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Nota 3</mat-label>
+                    <input matInput type="number" placeholder="Nota 3" formControlName="nota3" [errorStateMatcher]="vs.matcher">
+                    <mat-error *ngIf="vs.campoEsValido('nota3')">{{vs.getMensaje('nota3')}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="column">
+                <div fxLayout="row" fxLayoutGap="20px" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Seleccione estudiante</mat-label>
+                        <input matInput type="text" placeholder="Seleccione estudiante" formControlName="estudiante" [matAutocomplete]="autoestudiante" [errorStateMatcher]="vs.matcher" />
+                        <mat-icon matSuffix>arrow_drop_down</mat-icon>
+                        <mat-autocomplete #autoestudiante="matAutocomplete" (optionSelected)="opcionSeleccionada($event, 'estudiante')">
+                            <mat-option *ngFor="let estudiante of filteredOptionsEstudiantes | async" [value]="estudiante">
+                                {{ estudiante.nombres + " " + estudiante.apellidos | titlecase }}
+                            </mat-option>
+                            <mat-option *ngIf="listaEstudiantes.length === 0" [value]="">
+                                No hay opciones.
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="vs.campoEsValido('estudiante')">
+                            {{ vs.getMensaje("estudiante") }}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Seleccione curso</mat-label>
+                        <input matInput type="text" placeholder="Seleccione curso" formControlName="curso" [matAutocomplete]="autocurso" [errorStateMatcher]="vs.matcher" />
+                        <mat-icon matSuffix>arrow_drop_down</mat-icon>
+                        <mat-autocomplete #autocurso="matAutocomplete" (optionSelected)="opcionSeleccionada($event, 'curso')">
+                            <mat-option *ngFor="let curso of filteredOptionsCursos | async" [value]="curso">
+                                {{ curso.nombre | titlecase }}
+                            </mat-option>
+                            <mat-option *ngIf="listaCursos.length === 0" [value]="">
+                                No hay opciones.
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="vs.campoEsValido('curso')">
+                            {{ vs.getMensaje("curso") }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayoutAlign="end center">
+                <button type="submit" mat-raised-button color="primary">
+                    Guardar
+                    <i *ngIf="miFormulario.pending" class="pi pi-spin pi-spinner"></i> 
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

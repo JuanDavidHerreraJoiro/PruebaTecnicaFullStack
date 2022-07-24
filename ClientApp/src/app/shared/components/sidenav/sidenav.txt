@@ -1,0 +1,85 @@
+------------------------------------------------------------------------------------------------------------------
+HTML
+------------------------------------------------------------------------------------------------------------------
+        <!--
+ <mat-list>
+            <ng-container>
+                <mat-expansion-panel class="mat-elevation-z0" hideToggle="true" [expanded]="nav.dropDown" (click)="CambiarIcono()" *ngFor="let nav of navList">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="texto-blanco">
+                            <mat-icon fontSet="material-icons-outlined" mat-list-icon>{{ nav.icon }}
+                            </mat-icon>
+                            <span class="nav-list-item" style="margin-left: 15px">{{
+                nav.categoryName
+              }}</span>
+                            <mat-icon fontSet="material-icons-outlined " class="mat-icon-rtl-mirror" style="margin-left: 85px">
+                                {{ !cambiar ? "expand_more" : "chevron_right" }}
+                            </mat-icon>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-nav-list>
+                        <div style="margin-top: 0px">
+                            <ng-container *ngFor="let subCategory of nav.subCategory">
+                                <ng-container *ngIf="subCategory.visable">
+                                    <mat-list-option class="texto-blanco" (click)="cerrarSidenav()" [routerLink]="subCategory.subCategoryLink" routerLinkActive="active " [routerLinkActiveOptions]="{ exact: true }">
+                                        <mat-icon fontSet="material-icons-outlined " matListIcon>
+                                            {{ subCategory.subCategoryIcon }}</mat-icon>
+                                        <p matLine>{{ subCategory.subCategoryName }}</p>
+                                    </mat-list-option>
+                                </ng-container>
+                            </ng-container>
+                        </div>
+                    </mat-nav-list>
+                </mat-expansion-panel>
+            </ng-container>
+        </mat-list>
+        -->
+------------------------------------------------------------------------------------------------------------------
+CSS
+------------------------------------------------------------------------------------------------------------------
+
+      .mat-elevation-z0 {
+        background: #3f51b5 !important;
+      }
+      
+      mat-expansion-panel-header:hover {
+        background: #3f51b5 !important;
+      }
+------------------------------------------------------------------------------------------------------------------
+TS
+------------------------------------------------------------------------------------------------------------------
+//navList?: NavList[];
+
+/*this.navList = [
+      {
+        categoryName: 'Recaudos', icon: 'savings', dropDown: false,
+        subCategory:
+          [
+            { subCategoryName: 'Documentos', subCategoryLink: 'recaudo/documento', subCategoryIcon: 'description', visable: true, },
+            { subCategoryName: 'Recaudos', subCategoryLink: 'recaudo/consultar-recaudo', subCategoryIcon: 'savings', visable: true, },
+          ]
+      },
+    ];*/
+
+    
+/*export class NavList {
+  categoryName: string;
+  icon: string;
+  dropDown: boolean;
+  subCategory: NavListItem[];
+
+  constructor(_categoryName: string, _icon: string, _dropDown: boolean, _subCategory: NavListItem[]) {
+    this.categoryName = _categoryName;
+    this.icon = _icon;
+    this.dropDown = _dropDown;
+    this.subCategory = _subCategory;
+  }
+}
+
+export class NavListItem {
+  subCategoryName?: string;
+  subCategoryLink?: string;
+  subCategoryIcon?: string;
+  subCategoryQuery?: any;
+  visable?: boolean;
+}*/
